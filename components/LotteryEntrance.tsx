@@ -160,7 +160,11 @@ function LotteryEntrance() {
   }, [isWeb3Enabled, account]);
 
   return (
-    <div className="relative w-full h-[90%] flex items-center justify-start ">
+    <div
+      className={`relative w-full h-[90%] flex items-center ${
+        account ? "justify-start" : "justify-center"
+      } `}
+    >
       {getAddress(chainId) && account ? (
         <div className="w-full h-full flex flex-col sm:flex-row items-center sm:items-start justify-start sm:justify-evenly box-border ">
           <div className="w-[90%] sm:w-1/2 h-1/2 sm:h-full flex flex-col items-center justify-start pt-[6%] box-border">
@@ -191,7 +195,9 @@ function LotteryEntrance() {
             </h1>
           </div>
 
-          <div className="w-[90%] sm:w-1/2 h-1/2 sm:h-full flex flex-col items-center sm:items-start pl-0 sm:pl-[10%] box-border justify-start pt-[1%]">
+          <div
+            className={`w-[90%] sm:w-1/2 h-1/2 sm:h-full flex flex-col items-center sm:items-start pl-0 sm:pl-[10%] box-border justify-start pt-[1%]`}
+          >
             {balance && (
               <h1 className="text-gray-600 text-[1.2rem] self-center sm:self-end mr-0 sm:mr-[5%]">
                 Raffle Balance : {ethers.utils.formatUnits(balance, "ether")}{" "}
@@ -214,7 +220,7 @@ function LotteryEntrance() {
           </div>
         </div>
       ) : (
-        <h1>
+        <h1 className="self-center">
           {account === null
             ? "Please Connect Wallet"
             : "No Raffle currently running"}
